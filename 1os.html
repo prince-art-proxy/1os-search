@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1os - DuckDuckGo Search</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #121212;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    header {
+      font-size: 3em;
+      font-weight: bold;
+      color: #00ffcc;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 12px;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px 0 0 6px;
+      background-color: #1e1e1e;
+      color: #ffffff;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1em;
+      background-color: #00ffcc;
+      color: #000000;
+      border: none;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00e6b8;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>1os</header>
+  <form id="searchForm">
+    <input type="text" id="query" placeholder="Search DuckDuckGo..." required />
+    <button type="submit">Go</button>
+  </form>
+  <footer>Powered by DuckDuckGo • Dark Mode Enabled</footer>
+
+  <script>
+    const form = document.getElementById('searchForm');
+    const queryInput = document.getElementById('query');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const query = encodeURIComponent(queryInput.value.trim());
+      if (query) {
+        const duckURL = `https://duckduckgo.com/?q=${query}&kae=d&k7=1`;
+        window.location.href = duckURL;
+      }
+    });
+  </script>
+</body>
+</html>
